@@ -13,7 +13,6 @@ public class Choice : MonoBehaviour {
 
     void Start()
     {
-        numText.fontSize = (int)(GetComponent<RectTransform>().rect.width / 2);
         if (gameControl == null)
         {
             gameControl = GameObject.Find("GameControl");
@@ -34,5 +33,10 @@ public class Choice : MonoBehaviour {
     public void CheckAnswer()
     {
         gameControl.GetComponent<GameControl>().CheckAnswer(int.Parse(numText.text));
+    }
+
+    public Text GetText()
+    {
+        return numText;
     }
 }

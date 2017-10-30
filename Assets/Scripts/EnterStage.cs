@@ -11,19 +11,35 @@ public class EnterStage : MonoBehaviour {
     [SerializeField]
     Text starText;
 
-	// Use this for initialization
-	void Start () {
+    bool starChecked;
+
+	void Start ()
+    {
         float length = transform.parent.GetComponent<RectTransform>().rect.height * 4 / 5;
         GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if (!starChecked)
+        {
+            if (stage != 0)
+                if (GameMaster.starsEachStage[stage - 1] == 3)
+                    GetComponent<Image>().color = new Color(1, 1, 0);
+        }
 	}
 
     public void LoadStage()
     {
-        SceneManager.LoadScene(stage.ToString());
+        if (stage != 0)
+        {
+            GameMaster.stage = stage;
+            SceneManager.LoadScene("MainScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
+        
     }
 }

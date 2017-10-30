@@ -38,4 +38,16 @@ public class Menu : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void Title()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    public void HomeToTitle()
+    {
+        float length = transform.parent.GetComponent<RectTransform>().rect.height * 4 / 5;
+        GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
+        SceneManager.LoadScene("StartMenu");
+    }
 }

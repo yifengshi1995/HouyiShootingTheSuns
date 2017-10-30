@@ -12,7 +12,7 @@ public class Number : MonoBehaviour {
 
     void Start()
     {
-        numText.fontSize = (int)(GetComponent<RectTransform>().rect.width / 2);
+        
     }
 
     public void SetNumber(int num)

@@ -1,36 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 
-    [SerializeField]
-
-
-	// Use this for initialization
-	void Start ()
+    public static int stage;
+    public static int[] starsEachStage;
+    void Start()
     {
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+        stage = 1;
+        starsEachStage = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-    public void SelectStage()
-    {
-        SceneManager.LoadScene("Home");
+        DontDestroyOnLoad(this);
     }
 
-    public void HowToPlay()
+    public static int TotalStars()
     {
-        SceneManager.LoadScene("HowToPlay");
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
+        if (starsEachStage == null)
+        {
+            return 0;
+        }
+        else
+        {
+            return starsEachStage.Sum();
+        }
+        
     }
 }

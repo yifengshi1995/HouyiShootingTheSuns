@@ -207,11 +207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c0e8f72d2064043aa34cd366b6fc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 1
   numbers:
   - {fileID: 114170233347739092}
   - {fileID: 114101878570495450}
   - {fileID: 114438302929915384}
+  gameControl: {fileID: 0}
 --- !u!114 &114101878570495450
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,8 +21,6 @@ public class GameControl : MonoBehaviour {
     Text correctWrong;
     [SerializeField]
     GameObject resultScreen;
-    [SerializeField]
-    int stage;
 
     float timeUntilNextQuestion;
     float perQuestionPause;
@@ -31,11 +29,10 @@ public class GameControl : MonoBehaviour {
     bool nextQuestionTrigger;
     bool isResultShown;
 
-    void Awake()
+    void Start()
     {
         timeUntilNextQuestion = timeBetweenTwoQuestion;
         perQuestionPause = 1f;
-
     }
 	
 	void Update ()
@@ -71,7 +68,7 @@ public class GameControl : MonoBehaviour {
                 NextQuestion();
                 perQuestionPause = 1f;
                 nextQuestionTrigger = false;
-                correctWrong.text = "";
+                correctWrong.text = "";     
             }
         }
     }
@@ -84,10 +81,13 @@ public class GameControl : MonoBehaviour {
 
     public void NextQuestion()
     {
-        questionBoard.NextQuestion();
-        answerBoard.NextQuestion();
-        timeUntilNextQuestion = timeBetweenTwoQuestion;
         currentNumberOfQuestions++;
+        if (currentNumberOfQuestions < 10)
+        {
+            questionBoard.NextQuestion();
+            answerBoard.NextQuestion();
+            timeUntilNextQuestion = timeBetweenTwoQuestion;
+        }          
     }
 
     public void CheckResult()
@@ -97,16 +97,21 @@ public class GameControl : MonoBehaviour {
         {
             resultScreen.GetComponent<Result>().SetStars(true, true, true);
             resultScreen.GetComponent<Result>().GetText().text = "Perfect!";
+            GameMaster.starsEachStage[GameMaster.stage - 1] = 3;
         }
         else if (score >= 0.8 * numberOfQuestions)
         {
             resultScreen.GetComponent<Result>().SetStars(true, true, false);
             resultScreen.GetComponent<Result>().GetText().text = "Excellent!";
+            if (GameMaster.starsEachStage[GameMaster.stage - 1] < 2)
+                GameMaster.starsEachStage[GameMaster.stage - 1] = 2;
         }
         else if (score >= 0.5 * numberOfQuestions)
         {
             resultScreen.GetComponent<Result>().SetStars(true, false, false);
             resultScreen.GetComponent<Result>().GetText().text = "Good!";
+            if (GameMaster.starsEachStage[GameMaster.stage - 1] < 1)
+                GameMaster.starsEachStage[GameMaster.stage - 1] = 1;
         }
         else
         {
@@ -137,5 +142,10 @@ public class GameControl : MonoBehaviour {
 
             nextQuestionTrigger = true;
         } 
+    }
+
+    public int GetCurrentQuestionIndex()
+    {
+        return currentNumberOfQuestions;
     }
 }
