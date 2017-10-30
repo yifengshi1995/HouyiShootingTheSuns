@@ -10,9 +10,9 @@ public class Number : MonoBehaviour {
 
     int number;
 
-    void Awake()
+    void Start()
     {
-        //numText.fontSize = (int)(GetComponent<RectTransform>().rect.width / 2);
+        numText.fontSize = (int)(GetComponent<RectTransform>().rect.width / 2);
     }
 
     public void SetNumber(int num)

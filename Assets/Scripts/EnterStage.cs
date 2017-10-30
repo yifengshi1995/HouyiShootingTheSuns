@@ -12,8 +12,8 @@ public class EnterStage : MonoBehaviour {
     Text starText;
 
 	// Use this for initialization
-	void Awake () {
-        float length = transform.parent.GetComponent<RectTransform>().rect.height * 2 / 3;
+	void Start () {
+        float length = transform.parent.GetComponent<RectTransform>().rect.height * 4 / 5;
         GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
     }
 	

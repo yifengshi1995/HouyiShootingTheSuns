@@ -15,9 +15,9 @@ public class AnswerBoard : MonoBehaviour {
     int answer;
     bool generated;
 
-    void Awake ()
+    void Start ()
     {
-        float length = GetComponent<RectTransform>().rect.height * 2 / 3;
+        float length = GetComponent<RectTransform>().rect.height * 4 / 5;
         foreach (Choice c in choices)
             c.GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
     }
@@ -46,12 +46,22 @@ public class AnswerBoard : MonoBehaviour {
                 int right = Mathf.Max(1, operands[1] + UnityEngine.Random.Range(-operands[1] / 2, operands[1] / 2));
                 int wrongAnswer = left * right;
                 
+                
                 while (Array.Exists(numberChoices, x => x == wrongAnswer))
                 {
-                    left = Mathf.Max(1, operands[0] + UnityEngine.Random.Range(-operands[0] / 2, operands[0] / 2));
-                    right = Mathf.Max(1, operands[1] + UnityEngine.Random.Range(-operands[1] / 2, operands[1] / 2));
+                    if (left <= 3 || right <= 3)
+                    {
+                        left = Mathf.Max(1, operands[0] + UnityEngine.Random.Range(0, 4));
+                        right = Mathf.Max(1, operands[1] + UnityEngine.Random.Range(0, 4));
+                    }
+                    else
+                    {
+                        left = Mathf.Max(1, operands[0] + UnityEngine.Random.Range(-operands[0] / 2, operands[0] / 2));
+                        right = Mathf.Max(1, operands[1] + UnityEngine.Random.Range(-operands[1] / 2, operands[1] / 2));  
+                    }
                     wrongAnswer = left * right;
                 }
+                
 
                 numberChoices[i] = wrongAnswer;
             }           

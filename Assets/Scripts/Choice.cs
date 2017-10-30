@@ -11,9 +11,9 @@ public class Choice : MonoBehaviour {
     GameObject gameControl;
     int number;
 
-    private void Awake()
+    void Start()
     {
-        //numText.fontSize = (int)(GetComponent<RectTransform>().rect.width / 2);
+        numText.fontSize = (int)(GetComponent<RectTransform>().rect.width / 2);
         if (gameControl == null)
         {
             gameControl = GameObject.Find("GameControl");

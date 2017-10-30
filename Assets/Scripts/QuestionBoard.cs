@@ -16,12 +16,12 @@ public class QuestionBoard : MonoBehaviour {
     int[] rightRange;
     int[] operands;
 
-    void Awake()
+    void Start()
     {
         operands = new int[2];
         RangeDetermination();
         NumberInstantiation();
-        float length = GetComponent<RectTransform>().rect.height * 2 / 3;
+        float length = GetComponent<RectTransform>().rect.height * 4 / 5;
         foreach (Number num in numbers)
             num.GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
     }
@@ -36,40 +36,40 @@ public class QuestionBoard : MonoBehaviour {
         switch (stage)
         {
             case 1:
-                leftRange = Enumerable.Range(1, 9).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(1, 9).ToArray(); //1-9
+                rightRange = Enumerable.Range(1, 9).ToArray(); //1-9
                 break;
             case 2:
-                leftRange = Enumerable.Range(10, 10).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(10, 10).ToArray(); //10-19
+                rightRange = Enumerable.Range(1, 9).ToArray(); //1-9
                 break;
             case 3:
-                leftRange = Enumerable.Range(1, 9).Select(x => x * 11).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(1, 9).Select(x => x * 11).ToArray(); //multiples of 11
+                rightRange = Enumerable.Range(1, 9).ToArray(); //1-9
                 break;
             case 4:
-                leftRange = Enumerable.Range(10, 90).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(10, 90).ToArray(); //10-99
+                rightRange = Enumerable.Range(1, 9).ToArray(); //1-9
                 break;
             case 5:
-                leftRange = Enumerable.Range(10, 10).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(1, 12).ToArray(); //1-12, calculate square, problem fixed
+                rightRange = Enumerable.Range(1, 12).ToArray(); //placeholder
                 break;
             case 6:
-                leftRange = Enumerable.Range(10, 10).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(13, 13).ToArray(); //13-25, calculate square, problem fixed
+                rightRange = Enumerable.Range(13, 13).ToArray(); //placeholder
                 break;
             case 7:
-                leftRange = Enumerable.Range(10, 10).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(10, 10).ToArray(); //10-19
+                rightRange = Enumerable.Range(10, 10).ToArray(); //10-19
                 break;
             case 8:
-                leftRange = Enumerable.Range(10, 10).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(10, 90).ToArray(); //10-99
+                rightRange = Enumerable.Range(10, 10).ToArray(); //10-19
                 break;
             case 9:
-                leftRange = Enumerable.Range(10, 10).ToArray();
-                rightRange = Enumerable.Range(1, 9).ToArray();
+                leftRange = Enumerable.Range(10, 90).ToArray(); //10-99
+                rightRange = Enumerable.Range(10, 90).ToArray(); //10-99
                 break;
         }
     }
