@@ -17,6 +17,7 @@ public class StatusText : MonoBehaviour {
 		if (!checkStatus)
         {
             CheckNumberOfStars();
+            checkStatus = true;
         }
 	}
 

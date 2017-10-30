@@ -26,6 +26,7 @@ public class EnterStage : MonoBehaviour {
             if (stage != 0)
                 if (GameMaster.starsEachStage[stage - 1] == 3)
                     GetComponent<Image>().color = new Color(1, 1, 0);
+            starChecked = true;
         }
 	}
 
