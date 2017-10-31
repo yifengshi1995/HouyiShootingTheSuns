@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Author: Yifeng Shi
+//This class is for indicating the scenario changes based on the number of stars earned.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,19 +9,10 @@ public class StatusText : MonoBehaviour {
 
     bool checkStatus;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (!checkStatus)
-        {
-            CheckNumberOfStars();
-            checkStatus = true;
-        }
-	}
+	void Start ()
+    {
+        CheckNumberOfStars();
+    }
 
     public void CheckNumberOfStars()
     {

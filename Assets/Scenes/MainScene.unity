@@ -673,12 +673,32 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114965373337152152, guid: df84f9e723c760945ad82acdb1dba7b1,
+        type: 2}
+      propertyPath: gameControl
+      value: 
+      objectReference: {fileID: 2100596544}
     - target: {fileID: 114576059642370210, guid: df84f9e723c760945ad82acdb1dba7b1,
         type: 2}
       propertyPath: questionBoard
       value: 
       objectReference: {fileID: 692748201}
     - target: {fileID: 114576059642370210, guid: df84f9e723c760945ad82acdb1dba7b1,
+        type: 2}
+      propertyPath: gameControl
+      value: 
+      objectReference: {fileID: 2100596544}
+    - target: {fileID: 114643865639587722, guid: df84f9e723c760945ad82acdb1dba7b1,
+        type: 2}
+      propertyPath: gameControl
+      value: 
+      objectReference: {fileID: 2100596544}
+    - target: {fileID: 114209526417005828, guid: df84f9e723c760945ad82acdb1dba7b1,
+        type: 2}
+      propertyPath: gameControl
+      value: 
+      objectReference: {fileID: 2100596544}
+    - target: {fileID: 114706874218032068, guid: df84f9e723c760945ad82acdb1dba7b1,
         type: 2}
       propertyPath: gameControl
       value: 

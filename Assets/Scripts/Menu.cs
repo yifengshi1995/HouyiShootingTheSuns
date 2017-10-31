@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Author: Yifeng Shi
+//Mostly just a scene manager.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,19 +11,13 @@ public class Menu : MonoBehaviour {
     [SerializeField]
     Text[] texts;
 
-    // Use this for initialization
     void Start()
     {
+        //Adjust text size
         foreach (Text t in texts)
         {
             t.fontSize = (int)(GetComponent<RectTransform>().rect.height / 12);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void SelectStage()
@@ -44,6 +40,8 @@ public class Menu : MonoBehaviour {
         SceneManager.LoadScene("StartMenu");
     }
 
+    //This method is used by a button which is not located in the same panel as other buttons
+    //so special size adjustment is required.
     public void HomeToTitle()
     {
         float length = transform.parent.GetComponent<RectTransform>().rect.height * 4 / 5;

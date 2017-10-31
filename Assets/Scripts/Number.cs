@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Yifeng Shi
+//data structure of operands and result
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,11 +12,6 @@ public class Number : MonoBehaviour {
     Text numText;
 
     int number;
-
-    void Start()
-    {
-        
-    }
 
     public void SetNumber(int num)
     {

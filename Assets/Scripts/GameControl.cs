@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Yifeng Shi
+//Logic of the game.
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,8 +28,8 @@ public class GameControl : MonoBehaviour {
     float timeUntilNextQuestion;
     float perQuestionPause;
     int score;
-    int currentNumberOfQuestions;
-    bool nextQuestionTrigger;
+    int numberOfQuestionsAsked;
+    bool isPaused;
     bool isResultShown;
 
     void Start()
@@ -37,37 +40,43 @@ public class GameControl : MonoBehaviour {
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            NextQuestion();
-        }
-
+        //When the current question times up, go to the next question.
         if (timeUntilNextQuestion <= 0)
         {
-            NextQuestion();
+            timeUntilNextQuestion = timeBetweenTwoQuestion;
+            //Treat as wrong
+            correctWrong.text = "No Answer!";
+            correctWrong.color = Color.red;
+            isPaused = true;
+            perQuestionPause = 1f;
         }
 
-        if (!nextQuestionTrigger)
+        if (!isPaused)
         {
-            if (currentNumberOfQuestions == numberOfQuestions)
+            //If is not in the paused status between two questions, proceed       
+            if (numberOfQuestionsAsked == numberOfQuestions)
             {
+                //If there are already enough questions asked, show the result
                 CheckResult();
                 isResultShown = true;
             }
             else
             {
+                //Otherwise just count down the time for current question
                 timeUntilNextQuestion -= Time.deltaTime;
                 timeCounterText.text = "Time left for current question: " + Mathf.Max(0, timeUntilNextQuestion).ToString("0.00");
             }    
         }
         else
         {
+            //If is in the paused status, count down the pause timer
             perQuestionPause -= Time.deltaTime;
             if (perQuestionPause <= 0)
             {
+                //If pause times up, proceed to the next question
                 NextQuestion();
                 perQuestionPause = 1f;
-                nextQuestionTrigger = false;
+                isPaused = false;
                 correctWrong.text = "";     
             }
         }
@@ -81,10 +90,11 @@ public class GameControl : MonoBehaviour {
 
     public void NextQuestion()
     {
-        currentNumberOfQuestions++;
-        if (currentNumberOfQuestions < 10)
+        numberOfQuestionsAsked++;
+        //Do not show a new question if there are already enough questions showed.
+        if (numberOfQuestionsAsked < 10)
         {
-            questionBoard.NextQuestion();
+            questionBoard.NumberInstantiation();
             answerBoard.NextQuestion();
             timeUntilNextQuestion = timeBetweenTwoQuestion;
         }          
@@ -92,6 +102,8 @@ public class GameControl : MonoBehaviour {
 
     public void CheckResult()
     {
+        //Give stars based on performance. If has earned more stars than 
+        //the current performance, keep the higher one.
         resultScreen.SetActive(true);
         if (score == numberOfQuestions)
         {
@@ -122,7 +134,7 @@ public class GameControl : MonoBehaviour {
 
     public void CheckAnswer(int number)
     {
-        if (!isResultShown && !nextQuestionTrigger)
+        if (!isResultShown && !isPaused)
         {
             Number answerNumber = questionBoard.GetNumbers()[questionBoard.GetNumbers().Length - 1].GetComponent<Number>();
             answerNumber.SetNumber(number);
@@ -140,12 +152,13 @@ public class GameControl : MonoBehaviour {
                 correctWrong.color = Color.red;
             }
 
-            nextQuestionTrigger = true;
+            isPaused = true;
         } 
     }
 
     public int GetCurrentQuestionIndex()
     {
-        return currentNumberOfQuestions;
+        //Since the index start at 0, these two are actually the same
+        return numberOfQuestionsAsked;
     }
 }

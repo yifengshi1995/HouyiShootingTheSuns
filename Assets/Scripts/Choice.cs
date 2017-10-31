@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Yifeng Shi
+//data structure of choices
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,16 +11,10 @@ public class Choice : MonoBehaviour {
     [SerializeField]
     Text numText;
 
+    [SerializeField]
     GameObject gameControl;
-    int number;
 
-    void Start()
-    {
-        if (gameControl == null)
-        {
-            gameControl = GameObject.Find("GameControl");
-        }
-    }
+    int number;
 
     public void SetNumber(int num)
     {

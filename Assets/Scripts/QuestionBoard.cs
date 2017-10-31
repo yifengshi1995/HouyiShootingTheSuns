@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Author: Yifeng Shi
+//Class handling the panel containing the question
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +26,20 @@ public class QuestionBoard : MonoBehaviour {
         operands = new int[2];
         RangeDetermination();
         NumberInstantiation();
+
+        //Adjust the grid and text size based on the size of its parent panel
+        //to support resolution independence
         float length = GetComponent<RectTransform>().rect.height * 4 / 5;
         foreach (Number num in numbers)
         {
             num.GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
             num.GetText().fontSize = (int)(num.GetComponent<RectTransform>().rect.width / 2);
         }
-           
-    }
-	
-	void Update ()
-    {
-        
+
+        //Prevent digits out of the grid
+        if (stage >= 8)
+            numbers[2].GetText().fontSize = (int)(numbers[2].GetComponent<RectTransform>().rect.width / 3);
+
     }
 
     public void RangeDetermination()
@@ -111,10 +116,5 @@ public class QuestionBoard : MonoBehaviour {
     public Number[] GetNumbers()
     {
         return numbers;
-    }
-
-    public void NextQuestion()
-    {
-        NumberInstantiation();
     }
 }

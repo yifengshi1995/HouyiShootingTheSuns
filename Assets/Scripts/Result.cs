@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//Author: Yifeng Shi
+//This class is used by the result screen interations.
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,16 +15,6 @@ public class Result : MonoBehaviour {
     Sprite filledStar;
     [SerializeField]
     Sprite emptyStar;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void TryAgain()
     {
@@ -40,6 +31,7 @@ public class Result : MonoBehaviour {
         return resultText;
     }
 
+    //Show how many stars earned based on the performance
     public void SetStars(bool one, bool two, bool three)
     {
         if (one)
