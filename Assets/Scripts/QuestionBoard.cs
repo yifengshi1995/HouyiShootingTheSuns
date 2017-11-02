@@ -1,12 +1,8 @@
 ﻿//Author: Yifeng Shi
 //Class handling the panel containing the question
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuestionBoard : MonoBehaviour {
 

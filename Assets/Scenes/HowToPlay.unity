@@ -539,8 +539,8 @@ MonoBehaviour:
   m_Text: "Houyi is asked to shoot nine of the ten suns to restore the temperature
     of the earth. \n\nSelect the stage you want to play.\n\nWhen question appears,
     click the right answer in the bottom panel.\n\nThe more correctly you chose, the
-    more stars you get. If you get 3 stars in that stage, the color of that stage
-    will become gold.\n\nFor every three stars, you can shoot down one sun. Earn total
+    more stars you get. The stars you earned for each stage will be shown on the icon
+    of the stage.\n\nFor every three stars, you can shoot down one sun. Earn total
     27 stars to shoot all nine suns!"
 --- !u!222 &1448536729
 CanvasRenderer:

@@ -1,11 +1,8 @@
 ﻿//Author: Yifeng Shi
 //Containing static variables for recording the game flow.
 
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 

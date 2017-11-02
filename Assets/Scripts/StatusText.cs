@@ -1,7 +1,6 @@
 ﻿//Author: Yifeng Shi
 //This class is for indicating the scenario changes based on the number of stars earned.
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 

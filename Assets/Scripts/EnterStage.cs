@@ -2,8 +2,6 @@
 //This class is used by stage selection scene
 //to redirect player into specified stages
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -14,6 +12,10 @@ public class EnterStage : MonoBehaviour {
     int stage;
     [SerializeField]
     Text starText;
+    [SerializeField]
+    GameObject starPanel;
+    [SerializeField]
+    GameObject star;
 
     bool starChecked;
 
@@ -23,10 +25,16 @@ public class EnterStage : MonoBehaviour {
         float length = transform.parent.GetComponent<RectTransform>().rect.height * 4 / 5;
         GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
 
-        //If earned all three stars for this stage, make the grid gold to indicate that
+        //Show how many stars has earned for this stage
         if (stage != 0)
-            if (GameMaster.starsEachStage[stage - 1] == 3)
-                GetComponent<Image>().color = new Color(1, 1, 0);
+        {
+            for (int i = 0; i < GameMaster.starsEachStage[stage - 1]; i++)
+            {
+                GameObject starObj = Instantiate(star, starPanel.transform);
+                float size = starPanel.GetComponent<RectTransform>().rect.height * 4 / 5;
+                starObj.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
+            }    
+        }
     }
 
     public void LoadStage()

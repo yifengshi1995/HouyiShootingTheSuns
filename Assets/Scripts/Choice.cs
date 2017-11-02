@@ -1,8 +1,6 @@
 ﻿//Author: Yifeng Shi
 //data structure of choices
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
