@@ -27,7 +27,7 @@ public class StatusText : MonoBehaviour {
         {
             GetComponent<Text>().text = "Star: " + GameMaster.TotalStars() + ". Houyi finished half of the goal!";
         }
-        else if (GameMaster.TotalStars() > 2)
+        else if (GameMaster.TotalStars() > 0)
         {
             GetComponent<Text>().text = "Star: " + GameMaster.TotalStars() + ". Houyi made his first step!";
         }
