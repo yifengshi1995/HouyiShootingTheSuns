@@ -10,6 +10,8 @@ public class Result : MonoBehaviour {
     [SerializeField]
     Image[] stars;
     [SerializeField]
+    GameObject starPanel;
+    [SerializeField]
     Text resultText;
     [SerializeField]
     Sprite filledStar;
@@ -48,5 +50,11 @@ public class Result : MonoBehaviour {
             stars[2].sprite = filledStar;
         else
             stars[2].sprite = emptyStar;
+
+        foreach (Image star in stars)
+        {
+            float size = starPanel.GetComponent<RectTransform>().rect.height * 2 / 3;
+            star.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
+        }
     }
 }

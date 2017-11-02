@@ -1,6 +1,13 @@
 ﻿//Author: Yifeng Shi
 //Containing static variables for recording the game flow.
 
+/*
+ * Note: If you run the game in the Unity, you may find  
+ * NullReferenceException. That's because the DoNotDestroy 
+ * variables are loaded in the title screen, so normal
+ * play will not encounter this problem.
+ */
+
 using System.Linq;
 using UnityEngine;
 
